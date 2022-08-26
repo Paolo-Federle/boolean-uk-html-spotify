@@ -204,6 +204,7 @@ body {
     height: 24px;
     border-radius: 50%;
     padding: 21px;
+    margin: 5%;
     position: absolute;
     object-fit: cover;
     display: block;
@@ -316,10 +317,16 @@ body {
 }
 
 @media (max-width: 700px) {
-
     .left-text,
-    .left_bar_hidden {
+    .left_bar_hidden,
+    .audiobar-icon,
+    .audiobar-setting {
         display: none;
+    }
+
+    .audiobar{
+        display: grid;
+        grid-template-columns: 1fr 1fr 4fr;
     }
 
     .container {
