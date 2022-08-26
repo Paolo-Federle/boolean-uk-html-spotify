@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    overflow: hidden;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 254px repeat(2, 1fr);
+    grid-template-rows: 64px 1fr 91px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "barra-sinistra topbar topbar"
+        "barra-sinistra main main"
+        "audiobar audiobar audiobar";
+}
+
+/*-----------------------------  TOPBAR  -----------------------------*/
+
+.topbar {
+    grid-area: topbar;
+    background-color: #080b12;
+    display: grid;
+    grid-template: ". upgrade"
+    / 4fr 1fr;
+    padding: 0.6em;
+}
+
+.upgrade {
+    grid-area: upgrade;
+    width: 16em;
+    padding: 0.9em;
+    background-color: black;
+    text-transform: uppercase;
+    border: 1px solid white;
+    border-radius: 2em;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.upgrade:hover {
+    color: lightgrey;
+    background-color: #141922;
+}
+
+/*-----------------------------  AUDIOBAR  -----------------------------*/
+
+.audiobar {
+    grid-area: audiobar;
+    background-color: #282828;
+    position: sticky;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 4fr 4fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.player {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.audiobar-setting {
+    margin-left: auto; 
+    margin-right: 50px;
+}
+
+.svg-audiobar {
+    height: 16px;
+    width: 16px;
+    fill: #bababa;
+}
+
+.svg-audiobar:hover {
+    fill: #fff;
+}
+
+.progress-volume{
+    height: 4px;
+    background: #5e5e5e;
+    position: relative;
+    top: -9px;
+}
+.progress-volume::-webkit-progress-value
+  {
+      background: #ffffff;
+  }
+
+.progress-track {
+    height: 4px;
+    background: #5e5e5e;
+    position: relative;
+    top: -5px;
+  }
+  .progress-track::-webkit-progress-value
+  {
+      background: #ffffff;
+  }
+
+
+/*-----------------------------  MAIN  -----------------------------*/
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "recently-played"
+        "creato-per-John-Doe"
+        "artisti-più-popolari";
+    grid-area: main;
+    overflow-y: scroll;
+    /* min-height: calc(100vh - 155px); */
+    height: calc(100vh - 155px);
+    background-color: #141922;
+    padding: 20px;
+}
+
+@media (max-height: 233px) {
+    .main {
+        display: none;
+    }
+}
+
+.main-title {
+    margin: 0.5em 0 1em 0;
+}
+
+.recently-played {
+    grid-area: recently-played;   
+}
+
+.main-navbar {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.main-navbar > a {
+    margin-right: 20px;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+.main-navbar > a:hover {
+    color: gray;
+    padding-bottom: 0.3em;
+    border-width: 3em;
+    border-bottom: 2px solid rgb(134, 230, 134);
+}
+
+.box-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 954px) {
+    .box-area {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1254px) {
+    .box-area {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1454px) {
+    .box-area {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/*---  PLAYBOX  ---*/
+
+.play-box {
+    width: 80%;
+    height: fit-content;
+    margin-bottom: 20px;
+    padding: 20px;
+    position: relative;
+    /* box-sizing: border-box; */
+}
+
+.play-hover-icon {
+    background-color: #1abc54;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 21px;
+    position: absolute;
+    object-fit: cover;
+    display: block;
+}
+
+.play-hide {
+    opacity: 0;
+}
+
+.play-box:hover .play-hide {
+    transition: 1.0s;
+    opacity: 1;
+}
+
+.play-box:hover {
+    transition: 1.0s;
+    background-color: #282828;
+}
+
+.play-box-img {
+    max-width: 100%;
+}
+
+.img-round {
+    border-radius: 50%;
+}
+
+.play-box-text {
+    height: auto;
+    padding: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-box-title {
+    font-size: 1.17em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.play-box-subtitle {
+    font-weight: bold;
+    color: gray;
+    text-align: center;
+}
+
+.creato-per-John-Doe {
+    grid-area: creato-per-John-Doe;
+    margin-bottom: 20px;
+}
+
+
+.artisti-più-popolari {
+    grid-area: artisti-più-popolari;
+    margin-bottom: 20px;
+}
+
+/*-----------------------------  BARRA SINISTRA  -----------------------------*/
+
+.barra-sinistra {
+    grid-area: barra-sinistra;
+    background-color: lightgray;
+    padding-left: 24px;
+    padding-top: 24px;
+    background-color: #000000;
+}
+
+.barra-sinistra>div {
+    margin-bottom: 15px;
+}
+
+.left-spotify {
+    height: 40px;
+}
+
+.left-icon {
+    width: 20px;
+}
+
+.left-text {
+    color: #bababa;
+}
+
+.playlist {
+    margin-top: 20px;
+}
+
+.playlist>div {
+    margin-bottom: 15px;
+    color: #bababa;
+}
+
+.playlist>div:hover, .left-text:hover {
+    color: #fff;
+}
+
+.create_playlist {
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.create_playlist_icon {
+    height: 15px;
+    width: 15px;
+    background-color: white;
+    padding: 10px;
+    margin-right: 15px;
+}
+
+@media (max-width: 700px) {
+
+    .left-text,
+    .left_bar_hidden {
+        display: none;
+    }
+
+    .container {
+        grid-template-columns: 40px repeat(2, 1fr);
+    }
+
+    .barra-sinistra {
+        padding-left: 10px;
+    }
+
+    .left-spotify {
+        content: url(../assets/img/logo-small.svg);
+        width: 20px;
+    }
+
+    #spotify-no-margin {
+        margin-bottom: 7px;
+    }
+}
